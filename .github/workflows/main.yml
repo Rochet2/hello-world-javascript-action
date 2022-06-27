@@ -1,0 +1,41 @@
+on: [push]
+
+jobs:
+  filter_tags_job:
+    runs-on: ubuntu-latest
+    name: Test tag filtering
+    steps:
+      - name: Find matching tags asc
+        id: find_matching_tags_asc
+        uses: Rochet2/find-matching-tags-ghapi@main
+        with:
+          regex: ^TEST.*\.
+          sort: asc
+          owner: Rochet2
+          repo: find-matching-tags-ghapi
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print outputs asc
+        run: echo "Output ${{ steps.find_matching_tags_asc.outputs.tags }}"
+      - name: Test outputs asc
+        uses: nick-fields/assert-action@ed2cc40e8584b4abbce95fc9dd291391c685443f
+        with:
+          expected: '["TEST-1","TEST-2","TEST-3"]'
+          actual: ${{ steps.find_matching_tags_asc.outputs.tags }}
+      - name: Find matching tags desc
+        id: find_matching_tags_desc
+        uses: Rochet2/find-matching-tags-ghapi@main
+        with:
+          regex: ^TEST.*\.
+          sort: desc
+          owner: Rochet2
+          repo: find-matching-tags-ghapi
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print outputs desc
+        run: echo "Output ${{ steps.find_matching_tags_desc.outputs.tags }}"
+      - name: Test outputs desc
+        uses: nick-fields/assert-action@ed2cc40e8584b4abbce95fc9dd291391c685443f
+        with:
+          expected: '["TEST-3","TEST-2","TEST-1"]'
+          actual: ${{ steps.find_matching_tags_desc.outputs.tags }}
+      - name: Test print first element of asc and desc output
+        run: echo ${{ fromJson(steps.find_matching_tags_asc.outputs.tags)[0] }} ${{ fromJson(steps.find_matching_tags_desc.outputs.tags)[0] }}

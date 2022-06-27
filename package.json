@@ -1,0 +1,24 @@
+{
+  "name": "find-matching-tags-ghapi",
+  "version": "1.0.0",
+  "description": "Allows using regex to find matching tags from github tags of a repository using github API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rochet2/find-matching-tags-ghapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rochet2/find-matching-tags-ghapi/issues"
+  },
+  "homepage": "https://github.com/Rochet2/find-matching-tags-ghapi#readme",
+  "dependencies": {
+    "@actions/core": "^1.9.0",
+    "@actions/github": "^5.0.3"
+  }
+}

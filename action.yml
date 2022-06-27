@@ -1,0 +1,34 @@
+name: 'Filter tags'
+description: 'Find / filter / search / query repository tags with regex'
+inputs:
+  regex:
+    description: 'regex to match a tag with'
+    required: true
+  owner:
+    description: 'repository owner username or organization name'
+    required: true
+  repo:
+    description: 'repository name'
+    required: true
+  token:
+    description: 'github token used to authenticate API user. see https://docs.github.com/en/rest/overview/resources-in-the-rest-api#requests-from-github-actions'
+    required: true
+  per_page:
+    description: 'amount of results per page to fetch, between [1,100]'
+    required: false
+    default: '30'
+  page:
+    description: 'page number to fetch from'
+    required: false
+    default: '1'
+  sort:
+    description: 'sorting of output tags, asc or desc'
+    required: false
+    default: 'asc'
+outputs:
+  tags:
+    description: 'JSON array of the matched tags'
+runs:
+  using: 'node16'
+  main: 'index.js'
+
