@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Find matching tags asc
         id: find_matching_tags_asc
-        uses: 'Rochet2/find-matching-tags-ghapi@'${{ github.sha }}
+        uses: "Rochet2/find-matching-tags-ghapi@${{ github.sha }}"
         with:
           regex: ^TEST\-.*
           sort: asc
@@ -23,7 +23,7 @@ jobs:
           actual: ${{ steps.find_matching_tags_asc.outputs.tags }}
       - name: Find matching tags desc
         id: find_matching_tags_desc
-        uses: 'Rochet2/find-matching-tags-ghapi@'${{ github.sha }}
+        uses: "Rochet2/find-matching-tags-ghapi@${{ github.sha }}"
         with:
           regex: ^TEST\-.*
           sort: desc
