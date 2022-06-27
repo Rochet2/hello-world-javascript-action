@@ -25,13 +25,19 @@ This action allows using regex and github API to filter a repository's tags.
 ```yml
 - name: Find matching tags
   id: find_matching_tags
-  uses: Rochet2/find-matching-tags-ghapi@main
+  uses: Rochet2/find-matching-tags-ghapi@v1.1
   with:
     regex: ^TEST.*\.
     sort: asc
     owner: Rochet2
     repo: find-matching-tags-ghapi
     token: ${{ secrets.GITHUB_TOKEN }}
+
+- name: Assert tags
+  uses: nick-fields/assert-action@ed2cc40e8584b4abbce95fc9dd291391c685443f
+  with:
+    expected: '["TEST-1","TEST-2","TEST-3"]'
+    actual: ${{ steps.find_matching_tags.outputs.tags }}
 
 - name: Print outputs
   run: echo "Output ${{ steps.find_matching_tags.outputs.tags }}"
