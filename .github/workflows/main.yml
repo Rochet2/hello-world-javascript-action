@@ -9,7 +9,7 @@ jobs:
         id: find_matching_tags_asc
         uses: Rochet2/find-matching-tags-ghapi@main
         with:
-          regex: ^TEST.*\.
+          regex: ^TEST\-.*
           sort: asc
           owner: Rochet2
           repo: find-matching-tags-ghapi
@@ -25,7 +25,7 @@ jobs:
         id: find_matching_tags_desc
         uses: Rochet2/find-matching-tags-ghapi@main
         with:
-          regex: ^TEST.*\.
+          regex: ^TEST\-.*
           sort: desc
           owner: Rochet2
           repo: find-matching-tags-ghapi
