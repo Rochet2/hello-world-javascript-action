@@ -5,9 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Test tag filtering
     steps:
+      - uses: actions/checkout@v3
       - name: Find matching tags asc
         id: find_matching_tags_asc
-        uses: Rochet2/find-matching-tags-ghapi@main
+        uses: ./
         with:
           regex: ^TEST\-.*
           sort: asc
@@ -23,7 +24,7 @@ jobs:
           actual: ${{ steps.find_matching_tags_asc.outputs.tags }}
       - name: Find matching tags desc
         id: find_matching_tags_desc
-        uses: Rochet2/find-matching-tags-ghapi@main
+        uses: ./
         with:
           regex: ^TEST\-.*
           sort: desc
