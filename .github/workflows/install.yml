@@ -32,4 +32,4 @@ jobs:
 
     - name: Push changes
       run: |
-        git push
+        git push origin HEAD:${{ github.ref }}
