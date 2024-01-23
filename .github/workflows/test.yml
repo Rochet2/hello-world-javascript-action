@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Test tag filtering
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Find matching tags asc
         id: find_matching_tags_asc
         uses: ./
